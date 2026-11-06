@@ -36,7 +36,7 @@ html[data-theme="light"] .scrim { background: rgba(28,23,18,.35); }
 .segmented button.on { background: var(--surface); color: var(--text); box-shadow: 0 2px 10px rgba(0,0,0,.25), inset 0 0 0 1.5px var(--accent); }
 .segmented button.on small { color: var(--accent-ink); }
 .segmented .ico { width: 17px; height: 17px; }
-.extra-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.extra-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .extra { display: flex; align-items: center; gap: 8px; padding: 10px; border-radius: 14px; background: var(--surface-2); font-size: 13.5px; font-weight: 500; text-align: left; border: 1px solid transparent; transition: border-color .2s ease, background .2s ease; }
 .extra.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, var(--surface-2)); }
 .extra-price { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -64,7 +64,7 @@ html[data-theme="light"] .scrim { background: rgba(28,23,18,.35); }
 .cart-lines b { display: block; font-weight: 600; }
 .cart-lines small { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
 .cart-line-side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-.slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.slots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .slots button { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 52px; border-radius: 14px; background: var(--surface-2); font-family: "Antonio", sans-serif; font-size: 17px; font-weight: 500; letter-spacing: .5px; border: 1.5px solid transparent; transition: all .2s ease; }
 .slots button small { font-family: "DM Sans", sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); }
 .slots button:disabled { opacity: .45; text-decoration: line-through; }
@@ -93,14 +93,14 @@ html[data-theme="light"] .scrim { background: rgba(28,23,18,.35); }
 @keyframes glow { 50% { box-shadow: 0 0 0 14px var(--accent-glow); } }
 
 /* Upsell, allergens, waitlist, bill */
-.upsell { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.upsell { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .upsell-card { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 6px 6px 10px; border-radius: 18px; background: var(--surface-2); border: 1.5px solid transparent; text-align: left; transition: border-color .2s ease; }
 .upsell-card.on { border-color: var(--ok); }
 .upsell-photo { position: relative; height: 84px; border-radius: 13px; overflow: hidden; }
 .upsell-card b { font-size: 13px; font-weight: 600; line-height: 1.25; padding: 2px 4px 0; min-height: 32px; }
 .upsell-card .price { font-size: 13px; padding: 0 4px; color: var(--soft); }
 .upsell-card .add { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; }
-.allergen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.allergen-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .allergen-grid button { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: var(--surface-2); font-weight: 500; border: 1px solid transparent; }
 .allergen-grid button.on { border-color: var(--accent); }
 .wait-ring { position: relative; width: 190px; height: 190px; margin: 10px auto 0; }

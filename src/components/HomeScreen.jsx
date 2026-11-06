@@ -2,7 +2,7 @@ import { FAVOURITE_IDS, findItem, PIZZA_TAGS } from "../data/menu";
 import { VENUE } from "../data/venue";
 import { useI18n } from "../hooks/useI18n";
 import { greetingKey, kitchenOpen } from "../lib/clock";
-import { BagIcon, CalendarIcon, ChevronIcon, ClockIcon, PhoneIcon, PinIcon, QrIcon, UsersIcon, WheatIcon } from "./Icons";
+import { BagIcon, CalendarIcon, ChevronIcon, ClockIcon, MoonIcon, PhoneIcon, PinIcon, QrIcon, SunIcon, UsersIcon, WheatIcon } from "./Icons";
 import { OrderMini } from "./OrderProgress";
 import { Photo } from "./Photo";
 
@@ -10,6 +10,8 @@ const TAG_LABEL = { veggie: "tagVeggie", vegan: "tagVegan", meat: "tagMeat", spi
 const WEEK_ORDER = [3, 4, 5, 6, 0, 1, 2];
 const DAY_KEY = { 0: "daySun", 1: "dayMon", 2: "dayTue", 3: "dayWed", 4: "dayThu", 5: "dayFri", 6: "daySat" };
 const SERVICE_KEY = { both: "serviceBoth", dinner: "serviceDinner", lunch: "serviceLunch", closed: "serviceClosed" };
+// Icons instead of words: seven columns are too narrow for "Mediodía" on a phone.
+const SERVICE_ICONS = { both: [SunIcon, MoonIcon], dinner: [MoonIcon], lunch: [SunIcon], closed: [] };
 
 // The opening week at a glance (the house changes it from its panel each month).
 function WeekCard({ now }) {
@@ -22,10 +24,14 @@ function WeekCard({ now }) {
         {WEEK_ORDER.map((day) => (
           <div key={day} className={`week-day ${VENUE.week[day]} ${day === today ? "today" : ""}`}>
             <b>{t(DAY_KEY[day])}</b>
-            <small>{t(SERVICE_KEY[VENUE.week[day]])}</small>
+            <span className="week-service" role="img" aria-label={t(SERVICE_KEY[VENUE.week[day]])} title={t(SERVICE_KEY[VENUE.week[day]])}>
+              {SERVICE_ICONS[VENUE.week[day]].map((Icon, i) => <Icon key={i} />)}
+              {VENUE.week[day] === "closed" && "—"}
+            </span>
           </div>
         ))}
       </div>
+      <p className="week-legend"><SunIcon /> {t("serviceLunch")} <MoonIcon /> {t("serviceDinner")}</p>
       <p className="fine-print">{t("weekHint")}</p>
     </div>
   );
