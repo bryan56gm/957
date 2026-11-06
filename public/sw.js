@@ -1,5 +1,5 @@
 // Network-first for pages, cache-first for static assets and photos. Bump the version on each deploy.
-const CACHE_NAME = "957-demo-v1";
+const CACHE_NAME = "957-demo-v2";
 
 self.addEventListener("install", () => self.skipWaiting());
 

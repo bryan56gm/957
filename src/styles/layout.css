@@ -54,7 +54,7 @@ html[data-theme="light"] .welcome-shade { background: linear-gradient(180deg, rg
 .cart-btn { position: relative; width: 42px; height: 42px; border-radius: 999px; display: grid; place-items: center; border: 1px solid var(--line); background: var(--surface); }
 .cart-btn.has { border-color: var(--accent); color: var(--accent-ink); }
 .cart-btn .badge { position: absolute; top: -3px; right: -3px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--accent-grad); color: var(--on-accent); font-size: 11px; font-weight: 700; display: grid; place-items: center; animation: pop .35s ease; border: 2px solid var(--bg); }
-.nav { position: fixed; z-index: 30; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: 480px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; padding: 6px 6px calc(6px + var(--safe-bottom)); background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3); border-top: 1px solid var(--line); }
+.nav { position: fixed; z-index: 30; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: 480px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; padding: 6px 6px calc(6px + var(--safe-bottom)); background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3); border-top: 1px solid var(--line); }
 .nav button { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 0 2px; font-size: 11px; font-weight: 600; letter-spacing: .3px; color: var(--muted); transition: color .2s ease; }
 .nav button.on { color: var(--accent-ink); }
 .nav-ico { position: relative; display: grid; }
@@ -130,11 +130,12 @@ html[data-theme="light"] .welcome-shade { background: linear-gradient(180deg, rg
 .fav-body b { font-size: 28px; }
 .fav-body small { color: #d8ccbb; font-size: 13px; }
 
-.meats .sub { margin: 4px 0 14px; }
-.meat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.meat-grid button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 12px 4px; border-radius: 14px; background: var(--surface-2); font-size: 13px; font-weight: 600; transition: transform .15s ease, background .2s ease; }
+.tags .sub { margin: 4px 0 14px; }
+/* minmax(0, 1fr): a plain 1fr track never shrinks below its longest word and pushed the whole screen wider than the phone */
+.meat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.meat-grid button { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 12px 8px; border-radius: 14px; background: var(--surface-2); font-size: 13px; font-weight: 600; text-align: center; transition: transform .15s ease, background .2s ease; }
 .meat-grid button:active { transform: scale(.96); background: var(--surface-3); }
-.meat-grid b { font-weight: 600; font-size: 13.5px; }
+.meat-grid b { font-weight: 600; font-size: 13.5px; max-width: 100%; overflow-wrap: anywhere; }
 .meat-grid small { font-size: 11.5px; color: var(--accent-ink); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 
 .info { padding: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding-bottom: 16px; }
@@ -166,13 +167,17 @@ html[data-theme="light"] .welcome-shade { background: linear-gradient(180deg, rg
 
 /* 957: opening week and gluten-free banner */
 .week { display: flex; flex-direction: column; gap: 12px; }
-.week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
-.week-day { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 9px 2px; border-radius: 12px; background: var(--surface-2); text-align: center; }
+.week-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+.week-day { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 9px 2px; border-radius: 12px; background: var(--surface-2); text-align: center; }
 .week-day b { font-family: "Antonio", sans-serif; font-size: 15px; letter-spacing: .5px; text-transform: uppercase; }
-.week-day small { font-size: 10px; font-weight: 600; line-height: 1.2; color: var(--soft); }
+.week-service { display: flex; justify-content: center; gap: 1px; height: 14px; font-size: 12px; font-weight: 700; line-height: 14px; color: var(--soft); }
+.week-service .ico { width: 13px; height: 13px; flex: none; }
 .week-day.closed { opacity: .5; }
 .week-day.today { background: var(--accent-grad); color: var(--on-accent); }
-.week-day.today small { color: var(--on-accent); }
+.week-day.today .week-service { color: var(--on-accent); }
+.week-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 12.5px; color: var(--soft); }
+.week-legend .ico { width: 14px; height: 14px; }
+.week-legend .ico.moon { margin-left: 8px; }
 .gf-banner { display: flex; align-items: center; gap: 12px; width: 100%; margin-top: 12px; padding: 12px; border-radius: 16px; background: var(--ok-bg); text-align: left; }
 .gf-banner b { display: block; font-size: 15px; font-weight: 600; }
 .gf-banner small { display: block; font-size: 13px; color: var(--soft); }

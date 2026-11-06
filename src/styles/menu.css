@@ -35,7 +35,7 @@ html[data-theme="light"] .item-card, html[data-theme="light"] .tile, html[data-t
 .in-cart .ico { width: 12px; height: 12px; stroke-width: 3; }
 .item-body > b { font-size: 22px; }
 .item-desc { font-size: 13px; color: var(--muted); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.item-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.item-foot { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 8px; }
 .item-foot .price { font-size: 16px; }
 .badges { display: inline-flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
 .badge-tag { display: inline-flex; align-items: center; gap: 3px; font-size: 10.5px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: var(--accent-ink); background: color-mix(in srgb, var(--accent) 14%, transparent); border-radius: 999px; padding: 3px 8px; }
@@ -47,7 +47,7 @@ html[data-theme="light"] .item-card, html[data-theme="light"] .tile, html[data-t
 .item-card.sold-out .item-body > b, .item-card.sold-out .price { color: var(--muted); }
 .sold-tag { position: absolute; left: 6px; right: 6px; bottom: 6px; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: #f4f1ec; background: rgba(22,20,19,.8); border-radius: 8px; padding: 4px 2px; }
 
-.tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tile-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .tile-grid .menu-row { grid-column: 1 / -1; }
 .tile { position: relative; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); padding: 8px 8px 12px; }
 .tile-main { display: flex; flex-direction: column; gap: 3px; width: 100%; text-align: left; }
